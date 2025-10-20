@@ -8,8 +8,8 @@ public class BookDemo {
     bs.loadData();
     System.out.println(bs);
 
-    BookShop bs1 = bs.clone();       // copia (lista nueva, mismos objetos Book)
-    bs.getBooks().remove(2);         // quitamos un libro del original
+    BookShop bs1 = bs.clone(); // Copia (lista nueva, mismas instancias Book)
+    bs.getBooks().remove(2);   // Quitamos un libro del original
     bs1.setShopName("A1");
 
     System.out.println(bs);
@@ -17,7 +17,7 @@ public class BookDemo {
   }
 }
 
-// --------- clases de apoyo (sin public) ---------
+// --------- Clases de apoyo (sin public) ---------
 
 class Book {
   private int bid;
@@ -34,9 +34,6 @@ class Book {
     return "Book [bid=" + bid + ", bname=" + bname + "]";
   }
 }
-
-import java.util.ArrayList;
-import java.util.List;
 
 class BookShop implements Cloneable {
   private String shopName;
@@ -64,7 +61,7 @@ class BookShop implements Cloneable {
 
   @Override
   protected BookShop clone() throws CloneNotSupportedException {
-    // Copia superficial de los elementos (lista nueva, mismas instancias Book)
+    // Copia superficial: lista nueva, mismas referencias Book
     BookShop shop = new BookShop();
     shop.setShopName(this.shopName);
     for (Book b : this.books) {
